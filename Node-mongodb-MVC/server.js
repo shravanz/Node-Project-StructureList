@@ -16,6 +16,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/api/v1/product", require("./routes/productRoutes"));
+
 app.get("/", (req, res, next) => {
   res.send("Hello from Express");
 });
@@ -32,6 +34,6 @@ app.use(function (err, req, res, next) {
   res.status(500).send({
     status: 500,
     message: err.message,
-    body: "Something Broke!",
+    body: {},
   });
 });

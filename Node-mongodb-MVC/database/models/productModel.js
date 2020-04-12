@@ -7,6 +7,14 @@ const productSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    toObject: {
+      transform: function (doc, ret, options) {
+        ret.productID = ret._id;
+        delete ret._id;
+        delete ret.__v;
+        return ret;
+      },
+    }, // tranform the document
   }
 );
 
