@@ -10,4 +10,11 @@ router.post(
   productController.createProduct
 );
 
+router.get(
+  "/",
+  joiSchemaValidation.validateQueryParams(productSchema.getAllProductSchema),
+  productController.getProducts
+);
+router.get("/:id", productController.getProductById);
+
 module.exports = router;
