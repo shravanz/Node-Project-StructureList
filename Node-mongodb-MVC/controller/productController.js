@@ -48,3 +48,36 @@ module.exports.getProductById = async (req, res) => {
   }
   return res.status(response.status).send(response);
 };
+
+module.exports.updateProduct = async (req, res) => {
+  let response = { ...constants.defaultServerResponse }; //Coping of an object
+  try {
+    const responseFromtheService = await productService.updateProductService({
+      id: req.params.id,
+      updateInfo: req.body,
+    });
+    response.status = 200;
+    (response.message = constants.productMessage.PRODUCT_UPDATED),
+      (response.body = responseFromtheService);
+  } catch (error) {
+    response.message = error.message;
+    // console.log("Something Went Wrong: Controller:updateProduct", error);
+  }
+  return res.status(response.status).send(response);
+};
+
+module.exports.deleteProduct = async (req, res) => {
+  let response = { ...constants.defaultServerResponse }; //Coping of an object
+  try {
+    const responseFromtheService = await productService.deleteProductService({
+      id: req.params.id,
+    });
+    response.status = 200;
+    (response.message = constants.productMessage.PRODUCT_DELETED),
+      (response.body = responseFromtheService);
+  } catch (error) {
+    response.message = error.message;
+    // console.log("Something Went Wrong: Controller:deleteProduct", error);
+  }
+  return res.status(response.status).send(response);
+};
