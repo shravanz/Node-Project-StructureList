@@ -14,9 +14,13 @@ module.exports = {
   userMessage: {
     SIGNUP_SUCCESS: "Signup successfully",
     DUPLICATE_USER: "User already exists with given email",
+    LOGIN_SUCCESS: "Login Successfully",
+    USER_NOT_FOUND: "user not found",
+    INVALID_PASSWORD: "Invalid Password",
   },
   requestValidationMessage: {
     BAD_REQUEST: "Invalid Fields",
+    TOKEN_MISSING: "Token Missing from header",
   },
   databaseMessage: {
     INVALID_ID: "Invalid Id",
